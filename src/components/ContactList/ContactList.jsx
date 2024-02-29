@@ -10,9 +10,17 @@ export default function ContactList() {
 
   return (
     <div className={css.contactListBox}>
-      {error && <b>{error}</b>}
-      {loading && <b>Loading...</b>}
-      {contactsList.length > 0 && (
+      {error && (
+        <div className={css.information}>
+          <b>{error}</b>
+        </div>
+      )}
+      {loading && (
+        <div className={css.information}>
+          <b>Loading...</b>
+        </div>
+      )}
+      {contactsList.length > 0 ? (
         <ul className={css.contactList}>
           {contactsList.map(({ id, name, phone }) => (
             <li key={id}>
@@ -20,6 +28,10 @@ export default function ContactList() {
             </li>
           ))}
         </ul>
+      ) : (
+        <div className={css.information}>
+          <b>Nothing 😢</b>
+        </div>
       )}
     </div>
   );
