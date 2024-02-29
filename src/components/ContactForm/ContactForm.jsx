@@ -1,10 +1,10 @@
+import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import { useId } from 'react';
 import { nanoid } from 'nanoid';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactSlise';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { addContact } from '../../redux/operations';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!').required('This field is required.'),
@@ -18,6 +18,7 @@ export default function ContactForm() {
   const lableName = useId();
   const lableNumber = useId();
   const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{ name: '', number: '' }}

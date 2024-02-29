@@ -6,6 +6,7 @@ import { deleteContacts } from '../../../redux/operations';
 
 export default function Contact({ id, name, number }) {
   const dispatch = useDispatch();
+
   return (
     <>
       <div className={css.information}>
