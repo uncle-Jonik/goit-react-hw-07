@@ -1,8 +1,8 @@
 import css from './Contact.module.css';
 import { CiUser } from 'react-icons/ci';
 import { CiPhone } from 'react-icons/ci';
-import { onRemove } from '../../../redux/contactSlise';
 import { useDispatch } from 'react-redux';
+import { deleteContacts } from '../../../redux/operations';
 
 export default function Contact({ id, name, number }) {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function Contact({ id, name, number }) {
         className={css.delBtn}
         id={id}
         onClick={e => {
-          dispatch(onRemove(e.target.id));
+          dispatch(deleteContacts(e.target.id));
         }}
       >
         Delete
