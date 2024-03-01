@@ -21,7 +21,6 @@ export default function ContactForm() {
       initialValues={{ name: '', phone: '' }}
       validationSchema={contactSchema}
       onSubmit={(value, actions) => {
-        console.log(value);
         dispatch(addContact({ id: nanoid(), ...value }));
         actions.resetForm();
       }}
