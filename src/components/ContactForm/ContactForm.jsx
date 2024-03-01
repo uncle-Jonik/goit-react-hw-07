@@ -21,7 +21,7 @@ export default function ContactForm() {
 
   return (
     <Formik
-      initialValues={{ name: '', number: '' }}
+      initialValues={{ name: '', phone: '' }}
       validationSchema={contactSchema}
       onSubmit={(value, actions) => {
         dispatch(addContact({ id: nanoid(), ...value }));
@@ -38,11 +38,11 @@ export default function ContactForm() {
         </div>
 
         <label htmlFor={lableNumber} className={css.labelForm}>
-          Number:
+          Phone:
         </label>
         <div className={css.inputBox}>
-          <Field type="text" id={lableNumber} name="number" />
-          <ErrorMessage name="number" component="span" />
+          <Field type="text" id={lableNumber} name="phone" />
+          <ErrorMessage name="phone" component="span" />
         </div>
 
         <button type="submit" className={css.btnForm}>
