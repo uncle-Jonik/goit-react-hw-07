@@ -8,10 +8,7 @@ import { addContact } from '../../redux/operations';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!').required('This field is required.'),
-  number: Yup.string()
-    .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('This field is required.'),
+  phone: Yup.string().min(3, 'Too Short!').max(50, 'Too Long!').required('This field is required.'),
 });
 
 export default function ContactForm() {
@@ -24,6 +21,7 @@ export default function ContactForm() {
       initialValues={{ name: '', phone: '' }}
       validationSchema={contactSchema}
       onSubmit={(value, actions) => {
+        console.log(value);
         dispatch(addContact({ id: nanoid(), ...value }));
         actions.resetForm();
       }}
@@ -41,7 +39,7 @@ export default function ContactForm() {
           Phone:
         </label>
         <div className={css.inputBox}>
-          <Field type="text" id={lableNumber} name="phone" />
+          <Field type="number" id={lableNumber} name="phone" />
           <ErrorMessage name="phone" component="span" />
         </div>
 
